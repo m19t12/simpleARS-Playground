@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>simpleARS Playground</title>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" crossorigin="anonymous">
+
+
+    <!--Datatables CSS-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js">
+</head>
+<body>
+
+<main-container></main-container>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+
+<!-- Datatables -->
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+<!--Riot library-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.7.0/riot.min.js"></script>
+
+<!--Load Tags-->
+<script src="build/main-container/main-container.js"></script>
+<script src="build/main-container/navigation-bar/navigation-bar.js"></script>
+<script src="build/main-container/data-table/data-table.js"></script>
+<script src="build/main-container/json-input/json-input.js"></script>
+<script src="build/main-container/modal/modal.js"></script>
+<script src="build/main-container/query-input/query-input.js"></script>
+
+<script>
+    riot.mount('*');
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "name": "simplears-playground",
+  "version": "0.0.1",
+  "description": "Playground for showcasing simpleARS capabilities",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "compile-riot": "node_modules/riot/node_modules/.bin/riot  --ext tag.html tags tmp -w",
+    "babel-riot": "node_modules/babel-cli/bin/babel.js tmp --out-dir build --watch",
+    "dev": "concurrently --kill-others \"npm run compile-riot\" \"npm run babel-riot\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m19t12/simpleARS-Playground.git"
+  },
+  "author": "Manolis Tsoukalas",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/m19t12/simpleARS-Playground/issues"
+  },
+  "homepage": "https://github.com/m19t12/simpleARS-Playground#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015-riot": "^1.1.0",
+    "concurrently": "^3.5.0",
+    "riot": "^3.7.0"
+  }
+}
