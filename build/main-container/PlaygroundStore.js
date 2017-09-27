@@ -1,27 +1,29 @@
+'use strict';
+
 function PlaygroundStore() {
     riot.observable(this);
 
-    const store = this;
+    var store = this;
 
     store.state = {
         data: {},
         processedData: {}
     };
 
-    store.on('loadJSONData', (payload) => {
+    store.on('loadJSONData', function (payload) {
         $.ajax({
             url: payload,
             contentType: 'application/json'
-        }).done((data) => {
+        }).done(function (data) {
             store.state.data = JSON.parse(JSON.stringify(data, undefined, 2));
-            store.trigger('changed', store.state)
-        }).fail((error) => {
+            store.trigger('changed', store.state);
+        }).fail(function (error) {
             alert('An error occurred !!!');
             return error;
         });
     });
 
-    store.on('processQuery', (payload) => {
+    store.on('processQuery', function (payload) {
         $.ajax({
             url: '/ars-list',
             type: 'POST',
@@ -29,7 +31,7 @@ function PlaygroundStore() {
             data: JSON.stringify(payload)
         }).done(function (data) {
             store.state.processedData = JSON.parse(data);
-            store.trigger('changed', store.state)
+            store.trigger('changed', store.state);
         }).fail(function (error) {
             alert('An error occurred !!!');
             console.log(error);

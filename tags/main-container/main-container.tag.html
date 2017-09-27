@@ -6,13 +6,13 @@
         <div class="row">
             <div class="col-3">
                 <form style="height: 100%;">
-                    <json-input open_modal="{openModal}" json_data="{store.data}"></json-input>
+                    <json-input ref="json_input" open_modal="{openModal}" json_data="{store.data}"></json-input>
                 </form>
             </div>
             <div class="col">
                 <form>
-                    <query-input></query-input>
-                    <datatable></datatable>
+                    <query-input json_data="{store.data}" process_query="{processQuery}"></query-input>
+                    <data-table if="{store.processedData}" processed_data="{store.processedData}"></data-table>
                 </form>
             </div>
         </div>
@@ -27,14 +27,25 @@
 
         tag.openModal = openModal;
         tag.loadJSONData = loadJSONData;
+        tag.processQuery = processQuery;
 
         function openModal() {
             tag.refs.load_modal.modal.modal('toggle');
         }
 
-        function loadJSONData(payload){
+        function loadJSONData(payload) {
             RiotControl.trigger('loadJSONData', payload);
             tag.refs.load_modal.modal.modal('toggle');
+        }
+
+        function processQuery(payload) {
+            let json_data = tag.refs.json_input.getJSONData();
+            let complete_query = {
+                "data": json_data,
+                "search": payload
+            };
+
+            RiotControl.trigger('processQuery', complete_query);
         }
 
         RiotControl.on('changed', (state) => {

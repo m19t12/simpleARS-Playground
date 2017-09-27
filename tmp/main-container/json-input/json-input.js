@@ -2,6 +2,7 @@ riot.tag2('json-input', '<div class="form-group" style="height: 100%;"> <label>R
         const tag = this;
 
         tag.reformatJSON = reformatJSON;
+        tag.getJSONData = getJSONData;
 
         tag.on('mount', ()=>{
         });
@@ -21,5 +22,10 @@ riot.tag2('json-input', '<div class="form-group" style="height: 100%;"> <label>R
                 alert('Not valid JSON');
                 return error;
             }
+        }
+
+        function getJSONData() {
+            let jsonText = $(tag.refs.json_input).val();
+            return JSON.parse(jsonText);
         }
 });
