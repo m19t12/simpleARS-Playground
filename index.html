@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" crossorigin="anonymous">
 
 
-    <!--Datatables CSS-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js">
+    <!-- Datatables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 </head>
 <body>
 
@@ -29,6 +29,12 @@
 <!--Riot library-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.7.0/riot.min.js"></script>
 
+<!--RiotControll-->
+<script src="build/libs/riotcontrol.js"></script>
+
+<!--Application Store-->
+<script src="build/main-container/PlaygroundStore.js"></script>
+
 <!--Load Tags-->
 <script src="build/main-container/main-container.js"></script>
 <script src="build/main-container/navigation-bar/navigation-bar.js"></script>
@@ -38,6 +44,8 @@
 <script src="build/main-container/query-input/query-input.js"></script>
 
 <script>
+    var playgroundStore = new PlaygroundStore();
+    RiotControl.addStore(playgroundStore);
     riot.mount('*');
 </script>
 </body>

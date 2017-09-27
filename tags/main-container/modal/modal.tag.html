@@ -16,7 +16,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button ref="load_data" type="button" class="btn btn-primary">Load Data</button>
+                    <button ref="load_data" type="button" class="btn btn-primary" onclick="{loadData}">Load Data</button>
                 </div>
             </div>
         </div>
@@ -24,5 +24,17 @@
 
     <script>
         const tag = this;
+
+        tag.loadData = loadData;
+
+        tag.on('mount', ()=>{
+            tag.modal = $(tag.refs.load_data_modal);
+        });
+
+        function loadData(){
+            let url = $(tag.refs.url_input).val();
+
+            opts.load_json_data(url);
+        }
     </script>
 </modal>
