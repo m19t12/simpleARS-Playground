@@ -8,12 +8,20 @@ riot.tag2('data-table', '<div class="form-group"> <table ref="data_table" class=
     });
 
     function ars(data) {
-        var parseData = data;
-        var titles = Object.keys(data[0]);
-        var columns_data = [];
+        var firstItem = data[0];
+        var titles = Object.keys(firstItem);
+        var columnsData = [];
 
         titles.forEach(function (title) {
-            columns_data.push({ data: title, title: title });
+            var sub_keys = Object.keys(firstItem[title]);
+
+            if (sub_keys.length > 0) {
+                sub_keys.forEach(function (sub_title) {
+                    columnsData.push({ data: title + "." + sub_title, title: sub_title });
+                });
+            } else {
+                columnsData.push({ data: title, title: title });
+            }
         });
 
         if ($.fn.DataTable.isDataTable(tag.refs.data_table)) {
@@ -22,8 +30,8 @@ riot.tag2('data-table', '<div class="form-group"> <table ref="data_table" class=
         }
 
         $(tag.refs.data_table).DataTable({
-            data: parseData,
-            columns: columns_data
+            data: data,
+            columns: columnsData
         });
     }
 });
