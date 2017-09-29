@@ -5,16 +5,19 @@ riot.tag2('json-input', '<div class="form-group" style="height: 100%;"> <label>R
 
     tag.reformatJSON = reformatJSON;
     tag.getJSONData = getJSONData;
+    tag.insertData = insertData;
 
-    tag.on('mount', function () {});
+    tag.on('mount', function () {
+        var json_input = $(tag.refs.json_input);
 
-    tag.on('updated', function () {
-        var jsonPretty = JSON.stringify(opts.json_data, undefined, 2);
-        $(tag.refs.json_input).val(jsonPretty);
+        json_input.bind("paste", function (e) {
+            var pastedData = e.originalEvent.clipboardData.getData('text');
+            console.log(pastedData);
+            opts.add_data(pastedData);
+        });
     });
 
-    function reformatJSON(e) {
-        e.preventUpdate = true;
+    function reformatJSON() {
         var jsonText = $(tag.refs.json_input).val();
         try {
             var jsonParse = JSON.parse(jsonText);
@@ -29,5 +32,10 @@ riot.tag2('json-input', '<div class="form-group" style="height: 100%;"> <label>R
     function getJSONData() {
         var jsonText = $(tag.refs.json_input).val();
         return JSON.parse(jsonText);
+    }
+
+    function insertData(json_data) {
+        var jsonPretty = JSON.stringify(json_data, undefined, 2);
+        $(tag.refs.json_input).val(jsonPretty);
     }
 });

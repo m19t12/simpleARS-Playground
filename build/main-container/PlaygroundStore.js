@@ -38,4 +38,9 @@ function PlaygroundStore() {
             return error;
         });
     });
+
+    store.on('addData', function (payload) {
+        store.state.data = JSON.parse(JSON.stringify(payload, undefined, 2));
+        store.trigger('changed', store.state);
+    });
 }

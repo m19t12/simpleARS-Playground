@@ -11,7 +11,6 @@ riot.tag2('modal', '<div class="modal fade" ref="load_data_modal" tabindex="-1" 
 
     function loadData() {
         var url = $(tag.refs.url_input).val();
-
         opts.load_json_data(url);
     }
 });
