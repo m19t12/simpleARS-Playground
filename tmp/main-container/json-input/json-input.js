@@ -12,7 +12,8 @@ riot.tag2('json-input', '<div class="form-group" style="height: 100%;"> <label>R
             $(tag.refs.json_input).val(jsonPretty);
         });
 
-        function reformatJSON() {
+        function reformatJSON(e) {
+            e.preventUpdate = true;
             let jsonText = $(tag.refs.json_input).val();
             try {
                 let jsonParse = JSON.parse(jsonText);
