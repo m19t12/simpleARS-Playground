@@ -25,11 +25,15 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-helpers": "^6.24.1",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2015-riot": "^1.1.0",
     "concurrently": "^3.5.0",
     "riot": "^3.7.0",
     "riotcontrol": "0.0.3"
+  },
+  "dependencies": {
+    "uninstall": "0.0.0"
   }
 }
