@@ -13,7 +13,11 @@ riot.tag2('data-table', '<div class="form-group"> <table ref="data_table" class=
         var columnsData = [];
 
         titles.forEach(function (title) {
-            var sub_keys = Object.keys(firstItem[title]);
+            var sub_keys = [];
+
+            if (babelHelpers.typeof(firstItem[title]) === "object") {
+                sub_keys = Object.keys(firstItem[title]);
+            }
 
             if (sub_keys.length > 0) {
                 sub_keys.forEach(function (sub_title) {
