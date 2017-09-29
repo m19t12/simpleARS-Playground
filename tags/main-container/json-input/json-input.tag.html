@@ -16,19 +16,22 @@
     <script>
         const tag = this;
 
+
         tag.reformatJSON = reformatJSON;
         tag.getJSONData = getJSONData;
+        tag.insertData = insertData;
 
-        tag.on('mount', ()=>{
+        tag.on('mount', () => {
+            let json_input = $(tag.refs.json_input);
+
+            json_input.bind("paste", (e) => {
+                let pastedData = e.originalEvent.clipboardData.getData('text');
+                console.log(pastedData);
+                opts.add_data(pastedData);
+            });
         });
 
-        tag.on('updated', ()=>{
-            let jsonPretty = JSON.stringify(opts.json_data, undefined, 2);
-            $(tag.refs.json_input).val(jsonPretty);
-        });
-
-        function reformatJSON(e) {
-            e.preventUpdate = true;
+        function reformatJSON() {
             let jsonText = $(tag.refs.json_input).val();
             try {
                 let jsonParse = JSON.parse(jsonText);
@@ -43,6 +46,11 @@
         function getJSONData() {
             let jsonText = $(tag.refs.json_input).val();
             return JSON.parse(jsonText);
+        }
+
+        function insertData(json_data) {
+            let jsonPretty = JSON.stringify(json_data, undefined, 2);
+            $(tag.refs.json_input).val(jsonPretty);
         }
     </script>
 </json-input>

@@ -2,13 +2,17 @@ riot.tag2('data-table', '<div class="form-group"> <table ref="data_table" class=
         const tag = this;
 
         tag.on('updated', () => {
-            ars(opts.processed_data);
+            if (!$.isEmptyObject(opts.processed_data)) {
+                ars(opts.processed_data);
+            }
         });
 
         function ars(data) {
             let firstItem = data[0];
             let titles = Object.keys(firstItem);
             let columnsData = [];
+
+            console.log(data);
 
             titles.forEach((title) => {
                 let sub_keys = [];
